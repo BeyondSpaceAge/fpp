@@ -54,9 +54,10 @@ def setup_version():
         )
         if process.returncode != 0:
             print(
-                f"-- ERROR -- Cannot build locally without git and git repository",
+                "-- ERROR -- Cannot build locally without git and git repository",
                 file=sys.stderr,
             )
+
             sys.exit(1)
         scm_version = process.stdout.strip()
 
@@ -117,7 +118,7 @@ def github_release_download(version: str):
     """Attempts to get FPP via the FPP release"""
 
     # Three download tries
-    for _ in range(0, 3):
+    for _ in range(3):
         try:
             release_url = GITHUB_RELEASE_URL.format(
                 GITHUB_URL=GITHUB_URL,
